@@ -17,6 +17,7 @@ public class ReProFitActivity extends Activity {
         setContentView(R.layout.activity_reprofit);
 <<<<<<< HEAD
 =======
+
         initView();
         initData();
     }
@@ -24,6 +25,7 @@ public class ReProFitActivity extends Activity {
     private void initView() {
 
 >>>>>>> test-troprofig-2
+
     }
 
     public void initData(){
