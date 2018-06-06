@@ -15,10 +15,5 @@ public class ReProFitActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reprofit);
-        initView();
-    }
-    //进行初始化
-    private void initView() {
-
     }
 }
