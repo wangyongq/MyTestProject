@@ -16,9 +16,14 @@ public class ReProFitActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reprofit);
         initView();
+        initData();
     }
-    //进行初始化
+
     private void initView() {
 
+    }
+
+    public void initData(){
+        
     }
 }
