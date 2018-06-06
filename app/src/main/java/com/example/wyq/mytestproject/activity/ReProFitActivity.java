@@ -15,5 +15,18 @@ public class ReProFitActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reprofit);
+<<<<<<< HEAD
+=======
+        initView();
+        initData();
+    }
+
+    private void initView() {
+
+>>>>>>> test-troprofig-2
+    }
+
+    public void initData(){
+        
     }
 }
