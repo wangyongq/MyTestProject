@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.wyq.mytestproject.R;
+import com.example.wyq.mytestproject.beans.MainItemInfo;
 
 import java.util.List;
 import java.util.zip.Inflater;
+
+import static com.example.wyq.mytestproject.R.id.item_adapter_main;
 
 /**
  * Created by wyq on 2018/6/6.
@@ -20,10 +23,10 @@ public class MainRecycleAdapter extends RecyclerView.Adapter {
 
     private Context context;
     private int layoutId ;
-    private List<String> list;
+    private List<MainItemInfo> list;
     private OnMainRecycleItemClickListener mMainRecycleItemClickListener = null;
 
-    public MainRecycleAdapter(Context context,int layoutId,List<String> list){
+    public MainRecycleAdapter(Context context,int layoutId,List<MainItemInfo> list){
         this.context = context;
         this.layoutId = layoutId;
         this.list = list;
@@ -36,7 +39,14 @@ public class MainRecycleAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ViewHolder)holder).item_adapter_main.setText(list.get(position));
+        final MainItemInfo mainItemInfo = list.get(position);
+        ((ViewHolder)holder).item_adapter_main.setText(mainItemInfo.getName());
+        ((ViewHolder)holder).item_adapter_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainRecycleItemClickListener.itemClick(mainItemInfo);
+            }
+        });
     }
 
     @Override
@@ -46,22 +56,16 @@ public class MainRecycleAdapter extends RecyclerView.Adapter {
 
      class ViewHolder extends RecyclerView.ViewHolder {
 
-         private final TextView item_adapter_main;
+         private  TextView item_adapter_main;
 
          public ViewHolder(View itemView) {
              super(itemView);
              item_adapter_main = itemView.findViewById(R.id.item_adapter_main);
-             itemView.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     mMainRecycleItemClickListener.itemClick(item_adapter_main.getText().toString());
-                 }
-             });
          }
      }
 
     public interface OnMainRecycleItemClickListener{
-        void itemClick(String content);
+        void itemClick(MainItemInfo mainItemInfo);
     }
 
     public void setMainRecycleItemClickListener(OnMainRecycleItemClickListener mMainRecycleItemClickListener){
